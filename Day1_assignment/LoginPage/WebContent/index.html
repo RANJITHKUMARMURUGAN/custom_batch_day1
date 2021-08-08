@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button onclick="document.getElementById('demo').style.display='block'">Login</button>
+
+<!-- The Modal -->
+<div id="demo" class="modal">
+  <span onclick="document.getElementById('demo').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form action="Action" method="post" class="modal-content animate" >
+    <div class="imgcontainer">
+      <img src="img5.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="nameid" name="username" required>
+      <error-output class="text-error" for="text"></error-output><br><br/>
+      
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="passwordid" name="password" required>
+      <error-output class="text-pass"></error-output><br><br/>
+
+
+            
+      <button type="submit">Login</button>
+     
+    </div>
+  </form>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('demo');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<script>
+const text = document.querySelector('#nameid');
+const textError = document.querySelector('.text-error');
+text.addEventListener('input',function(){
+	let nameregex = RegExp("^[A-z]{1}[a-z]{2,15}$");
+	if(nameregex.test(text.value))
+		textError.textContent="";
+	else
+		textError.textContent="Name is incorect";
+})
+
+const pwd = document.querySelector('#passwordid');
+        const textpass = document.querySelector('.text-pass');
+        pwd.addEventListener('input',function(){
+        let passwordRange = RegExp('^[A-Za-z1-9@$%&#]{8,15}$');
+        if(passwordRange.test(pwd.value))
+        textpass.textContent = "";
+        else textpass.textContent = "the paswword is Incorrect";
+        });
+</script>
+</body>
+</html>
